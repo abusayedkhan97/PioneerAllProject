@@ -1,0 +1,80 @@
+#modalOpenBTN{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+}
+
+.modal-content {
+  margin-top: 60px;
+  background-color: #fff;
+  padding: 10px 20px 20px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+
+/* Button styles */
+.open-modal-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  font-size: 30px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* close-modal-btn */
+
+#modalClose{
+  text-align: right;
+  border-bottom: 1px solid #eee;
+  margin: 0px;
+  padding-top: 0px;
+}
+
+#modalClose #close-modal-btn{
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+}

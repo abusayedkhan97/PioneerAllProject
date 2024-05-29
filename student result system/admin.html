@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+<!-- Include DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+    <!-- font-awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- bootstrap css link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+
+    <div class="w-50 mt-5 text-end m-auto">
+      <a class="btn btn-success" href="./index.html">Go to Result Search Page <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="w-75 mt-2 m-auto">
+      <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+          <div class="card">
+            <div class="card-header">
+              <h5>All Student data</h5>
+            </div>
+
+            <div class="card-body">
+              <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#createStudent">
+                <i class="fa-solid fa-plus"></i> Create new student
+              </button>
+              <table class="table" id="myTable">
+                <thead>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Roll</th>
+                  <th>Reg</th>
+                  <th>Bord</th>
+                  <th>Created At</th>
+                  <th>Result</th>
+                  <th>Action</th>
+                </thead>
+
+                <tbody id="getAllStudendData"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+
+    <!-- Model -->
+    <div class="modal fade" id="createStudent">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h4>Create new Student</h4>
+            <button class="btn-close text-bg-warning createStudentbtn-close" data-bs-dismiss="modal"></button>
+          </div>
+          
+          <div class="modal-body">
+            <h3 id="allFildRequired"></h3>
+
+            <form id="create-student-form">
+              <div class="my-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                  name="name"
+                />
+              </div>
+              <div class="my-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Father's Name"
+                  name="father"
+                />
+              </div>
+              <div class="my-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Mother's name"
+                  name="mother"
+                />
+              </div>
+              <div class="my-3">
+                <input
+                  type="date"
+                  class="form-control"
+                  placeholder="Date Of Birth"
+                  name="dob"
+                />
+              </div>
+
+              <div class="my-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Roll No"
+                  name="roll"
+                />
+              </div>
+
+              <div class="my-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Reg No"
+                  name="reg"
+                />
+              </div>
+              <div class="my-3">
+                <select name="inst" id="" class="form-control">
+                  <option value="">-select inst-</option>
+                  <option value="Infa">Infa</option>
+                  <option value="Dasgpi">Dasgpi</option>
+                  <option value="DevZone">DevZone</option>
+                  <option value="UGV">UGV</option>
+                </select>
+              </div>
+              <div class="my-3">
+                <select name="board" class="form-control" id="board">
+                  <option value="">-Board-</option>
+                  <option value="barisal">Barisal</option>
+                  <option value="chittagong">Chittagong</option>
+                  <option value="comilla">Comilla</option>
+                  <option value="dhaka">Dhaka</option>
+                  <option value="dinajpur">Dinajpur</option>
+                  <option value="jessore">Jessore</option>
+                  <option value="mymensingh">Mymensingh</option>
+                  <option value="rajshahi">Rajshahi</option>
+                  <option value="sylhet">Sylhet</option>
+                  <option value="madrasah">Madrasah</option>
+                  <option value="tec">Technical</option>
+                  <option value="dibs">DIBS(Dhaka)</option>
+                </select>
+              </div>
+              <div class="my-3">
+                <select name="year" class="form-control" id="year">
+                  <option value="0000">-Select Year -</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option>
+                  <option value="2012">2012</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
+                  <option value="2009">2009</option>
+                  <option value="2008">2008</option>
+                  <option value="2007">2007</option>
+                  <option value="2006">2006</option>
+                  <option value="2005">2005</option>
+                  <option value="2004">2004</option>
+                  <option value="2003">2003</option>
+                  <option value="2002">2002</option>
+                  <option value="2001">2001</option>
+                  <option value="2000">2000</option>
+                  <option value="1999">1999</option>
+                  <option value="1998">1998</option>
+                  <option value="1997">1997</option>
+                  <option value="1996">1996</option>
+                </select>
+              </div>
+              <div class="my-3">
+                <select name="exam" class="form-control">
+                  <option value="">-Examination-</option>
+                  <option value="hsc">HSC/Alim/Equivalent</option>
+                  <option value="jsc">JSC/JDC</option>
+                  <option value="ssc">SSC/Dakhil</option>
+                  <option value="ssc_voc">SSC(Vocational)</option>
+                  <option value="hsc">HSC/Alim</option>
+                  <option value="hsc_voc">HSC(Vocational)</option>
+                  <option value="hsc_hbm">HSC(BM)</option>
+                  <option value="hsc_dic">Diploma in Commerce</option>
+                  <option value="hsc">Diploma in Business Studies</option>
+                </select>
+              </div>
+              <div class="my-3 text-start">
+                <label>
+                  <input type="radio" name="group" value="Science" /> Science
+                </label>
+                <label>
+                  <input type="radio" name="group" value="Arts" /> Arts
+                </label>
+              </div>
+              <div class="my-3 text-start">
+                <label>
+                  <input type="radio" name="type" value="Regular" /> Regular
+                </label>
+                <label>
+                  <input type="radio" name="type" value="Irregular" /> Irregular
+                </label>
+              </div>
+              <div class="my-3">
+                <button type="submit" class="btn btn-primary">Create</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+<!-- student view modal -->
+    <div class="modal fade" id="seeStudent">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <button class="btn-close text-bg-warning" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body seeStudent"></div>
+        </div>
+      </div>
+    </div>
+
+<!-- result add modal -->
+    <div class="modal fade" id="result">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <button class="resultBtn-close btn-close text-bg-warning" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body result">
+            <form id="addResult">
+              <input type="hidden" class="form-control mb-3" name="id" placeholder="id">
+              <input type="number" min="0" max="100" class="form-control mb-3" name="Bangla" placeholder="Bangla">
+              <input type="number" min="0" max="100" class="form-control mb-3" name="English" placeholder="English">
+              <input type="number" min="0" max="100" class="form-control mb-3" name="Math" placeholder="Math">
+              <input type="number" min="0" max="100" class="form-control mb-3" name="Science" placeholder="Science">
+              <input type="number" min="0" max="100" class="form-control mb-3" name="Social" placeholder="Social">
+              <input type="number" min="0" max="100" class="form-control mb-3" name="Religion" placeholder="Religion">
+
+              <input type="submit" class="btn btn-success form-control">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        <!-- student update Modal-->
+        <div class="modal fade" id="edite">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+              <div class="modal-header">
+                <button
+                  class="btn-close text-bg-warning student-btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+    
+              <div class="modal-body">
+                <form id="updatestudent" class="mt-5">
+                  <input type="hidden" name="id" />
+                  <input
+                    type="number"
+                    placeholder="Bangla"
+                    name="Bangla"
+                    class="form-control mb-3"
+                  />
+                  <input
+                    type="number"
+                    placeholder="English"
+                    name="English"
+                    class="form-control mb-3"
+                  />
+                  <input
+                    type="number"
+                    placeholder="Math"
+                    name="Math"
+                    class="form-control mb-3"
+                  />
+                  
+                  <input
+                    type="number"
+                    placeholder="Science"
+                    name="Science"
+                    class="form-control mb-3"
+                  />
+
+                  <input
+                    type="number"
+                    placeholder="Social"
+                    name="Social"
+                    class="form-control mb-3"
+                  />
+
+                <input
+                type="number"
+                placeholder="Religion"
+                name="Religion"
+                class="form-control mb-3"
+              />
+    
+                  <button type="submit" class="btn btn-primary d-flex mt-3 fs-4">
+                    Update
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+ <!-- Include jQuery -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <!-- Include DataTables JS -->
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+    <!-- bootstrap js link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- custom js link -->
+    <script src="./src/functions.js"></script>
+    <script src="./src/models.js"></script>
+    <script src="./src/main.js"></script>
+
+    <script>
+      // Initialize DataTables
+      $(document).ready(function() {
+          $('#myTable').DataTable();
+      });
+  </script>
+
+  </body>
+</html>

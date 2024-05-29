@@ -1,0 +1,48 @@
+.box{
+    width: 50%;
+    margin:40px auto;
+    position: relative;
+}
+
+.box i{
+    color: red;
+    text-align: right;
+    float: right;
+    transform: rotate(0deg);
+    transition: .4s;
+}
+
+.box p{
+    font-size: 18px;
+}
+
+.box h2{
+    border: 1px solid #ddd;
+    border-bottom: 0px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 0px;
+}
+
+.box .text{
+    border: 1px solid #ddd;
+    border-top: 0px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-out;
+}
+
+.box .text p{
+    padding: 10px;
+}
+
+.togglejs{
+    transform: rotate(405deg) !important;
+}
+
+/*  */
+
+.text.open {
+    height: auto; /* This allows the element to expand to its full height */
+    overflow: hidden; /* Ensure content is not displayed if height is not fully expanded */
+}

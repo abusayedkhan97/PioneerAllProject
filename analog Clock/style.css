@@ -1,0 +1,57 @@
+.clock{
+    width: 400px;
+    height: 400px;
+    background-image: url(./img/clock.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.s{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.s img{
+    width: 17px;
+    position: absolute;
+    transform: rotate(180deg);
+}
+
+
+.m{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+}
+
+
+.m img{
+    width: 20px;
+    height: 99px;
+    position: absolute;
+    transform: rotate(180deg);
+}
+
+.h{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+}
+
+
+.h img{
+    width: 20px;
+    height: 80px;
+    position: absolute;
+    transform: rotate(180deg);
+}
