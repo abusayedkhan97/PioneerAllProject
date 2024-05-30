@@ -53,6 +53,13 @@ const deleteIncome = (id) => {
     localStorage.setItem("incomeData", JSON.stringify(deleteData));
 
     allIncome();
+    cash();
+    const filterBtn = document.querySelector("#filterBtn");
+    const toSearchData = document.querySelector('.toSearchData').value;
+    const ftomSearchData = document.querySelector('.ftomSearchData').value;
+    if (ftomSearchData && toSearchData) {
+      filterBtn.click();
+    }
   }
 };
 
@@ -111,8 +118,20 @@ const deleteExpense = (id) => {
     localStorage.setItem("expenseData", JSON.stringify(deleteData));
 
     allExpense();
+
+    // total Amount
+    totalExpenseAmount();
+    cash();
+
+    const filterBtn = document.querySelector("#filterBtn");
+    const toSearchData = document.querySelector('.toSearchData').value;
+    const ftomSearchData = document.querySelector('.ftomSearchData').value;
+    if (ftomSearchData && toSearchData) {
+      filterBtn.click();
+    }
   }
 };
+
 
 
 // Dta filtering with Date------------------------------
@@ -141,12 +160,11 @@ filterBtn.onclick = () => {
   
 
   const getDaysFromFilter = calculateDateDifference(ftomSearchData, toSearchData);
-  console.log(getDaysFromFilter);
 
   filterTotalDays.innerHTML = `${getDaysFromFilter.years > 0 ? getDaysFromFilter.years+" Years" : ""} ${getDaysFromFilter.months > 0 ? getDaysFromFilter.months+" Months" : ""} ${getDaysFromFilter.days > 0 ? getDaysFromFilter.days+" Days" : ""}`;
 
-  getIncome.innerHTML = Search(ftomSearchData, toSearchData, getincomeData);
-  getExpense.innerHTML = Search(ftomSearchData, toSearchData, getExpenseData);
+    getIncome.innerHTML = Search(ftomSearchData, toSearchData, getincomeData, "getincomeData");
+  getExpense.innerHTML = Search(ftomSearchData, toSearchData, getExpenseData, "getExpenseData");
   
   totalIncomeAmountHtml.innerHTML = `<h3><i class="fa-solid fa-bangladeshi-taka-sign fa-fw"></i> ${SearchAmount(ftomSearchData, toSearchData, getincomeData)}</h3>`;
 

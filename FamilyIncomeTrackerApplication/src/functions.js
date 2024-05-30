@@ -141,7 +141,7 @@ function cash() {
 
 // Data filtring with Date
 
-const Search = (ftomSearchData, toSearchData, data) => {
+const Search = (ftomSearchData, toSearchData, data, dataType) => {
   const getincomeData = data;
 
   let dataList = "";
@@ -158,22 +158,22 @@ const Search = (ftomSearchData, toSearchData, data) => {
 
       // Filter for the specified date range
       if (itemDate >= startDate && itemDate <= now) {
-        const { discription, mode, amount } = item;
+        const { discription, mode, amount, id } = item;
         x++;
         dataList += `<tr>
             <td>${x < 10 ? "0" + x : "" + x}</td>
             <td>${discription}</td>
-            <td>${GetdateLS.month}:${GetdateLS.day}:${GetdateLS.year}-${
-          GetdateLS.hours
-        }:${GetdateLS.minutes} ${GetdateLS.period}</td>
+            <td>${GetdateLS.month}:${GetdateLS.day}:${GetdateLS.year}</td>
             <td>${mode}</td>
             <td>${amount}</td>
             <td>
-            <button class="bg-warning">
+
+            <button class="bg-warning" data-bs-toggle="modal" data-bs-target=${dataType == "getincomeData" ? "#incomeEdite" : "#expenseEdite"} onclick="${dataType == "getincomeData" ? "incomeDataPass" : "expenseDataPass"}(${id})">
+
             <i class="fa-solid fa-edit"></i>
             </button>
 
-            <button class="bg-danger">
+            <button class="bg-danger" onclick="${dataType == "getincomeData" ? "deleteIncome": "deleteExpense"}(${id})">
             <i class="fa-solid fa-trash"></i>
             </button>
             </td>

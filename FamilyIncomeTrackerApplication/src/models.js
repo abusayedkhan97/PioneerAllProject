@@ -103,74 +103,94 @@ totalExpenseAmount();
 cash();
 
 
+// Update income data
+const incomeUpdateForm = document.getElementById("incomeUpdateForm");
+incomeUpdateForm.onsubmit = (e) => {
+  const btnClose = document.querySelector(".income-update-btn-close");
+  e.preventDefault();
 
+  const incomeUpdateFormData = new FormData(e.target);
+  const { discription, time, mode, amount, id } =
+    Object.fromEntries(incomeUpdateFormData);
 
+  const getDataLS = JSON.parse(localStorage.getItem("incomeData"));
 
-  // Update income data
-  const incomeUpdateForm = document.getElementById("incomeUpdateForm");
-  incomeUpdateForm.onsubmit = (e) => {
-    const btnClose = document.querySelector(".income-update-btn-close");
-    e.preventDefault();
+  // Update data
+  const updateData = getDataLS.map((item) => {
+    if (item.id == id) {
+      return {
+        ...item,
+        discription,
+        time,
+        mode,
+        amount,
+      };
+    } else {
+      return item;
+    }
+  });
 
-    const incomeUpdateFormData = new FormData(e.target);
-    const { discription, time, mode, amount, id } =
-      Object.fromEntries(incomeUpdateFormData);
+  //Update data ls
 
-    const getDataLS = JSON.parse(localStorage.getItem("incomeData"));
+  localStorage.setItem("incomeData", JSON.stringify(updateData));
+  allIncome();
+  // total Expense Amount
+  totalExpenseAmount();
+  // total Expense Amount
+  cash();
+  btnClose.click();
 
-    // Update data
-    const updateData = getDataLS.map((item) => {
-      if (item.id == id) {
-        return {
-          ...item,
-          discription,
-          time,
-          mode,
-          amount,
-        };
-      } else {
-        return item;
-      }
-    });
+  // filter and edit
+  const filterBtn = document.querySelector("#filterBtn");
+  const toSearchData = document.querySelector(".toSearchData").value;
+  const ftomSearchData = document.querySelector(".ftomSearchData").value;
+  if (ftomSearchData && toSearchData) {
+    filterBtn.click();
+  }
+};
 
-    //Update data ls
+// Update Expense data
+const expenseUpdateForm = document.getElementById("expenseUpdateForm");
+expenseUpdateForm.onsubmit = (e) => {
+  const btnClose = document.querySelector(".expense-update-btn-close");
+  e.preventDefault();
 
-    localStorage.setItem("incomeData", JSON.stringify(updateData));
-    allIncome();
-    btnClose.click();
-  };
+  const expenseFormData = new FormData(e.target);
+  const { discription, time, mode, amount, id } =
+    Object.fromEntries(expenseFormData);
 
+  const getDataLS = JSON.parse(localStorage.getItem("expenseData"));
 
-  // Update Expense data
-  const expenseUpdateForm = document.getElementById("expenseUpdateForm");
-  expenseUpdateForm.onsubmit = (e) => {
-    const btnClose = document.querySelector(".expense-update-btn-close");
-    e.preventDefault();
+  // Update data
+  const updateData = getDataLS.map((item) => {
+    if (item.id == id) {
+      return {
+        ...item,
+        discription,
+        time,
+        mode,
+        amount,
+      };
+    } else {
+      return item;
+    }
+  });
 
-    const expenseFormData = new FormData(e.target);
-    const { discription, time, mode, amount, id } =
-      Object.fromEntries(expenseFormData);
+  //Update data ls
 
-    const getDataLS = JSON.parse(localStorage.getItem("expenseData"));
+  localStorage.setItem("expenseData", JSON.stringify(updateData));
+  allExpense();
+  // total Expense Amount
+  totalExpenseAmount();
 
-    // Update data
-    const updateData = getDataLS.map((item) => {
-      if (item.id == id) {
-        return {
-          ...item,
-          discription,
-          time,
-          mode,
-          amount,
-        };
-      } else {
-        return item;
-      }
-    });
-
-    //Update data ls
-
-    localStorage.setItem("expenseData", JSON.stringify(updateData));
-    allExpense();
-    btnClose.click();
-  };
+  // total Expense Amount
+  cash();
+  btnClose.click();
+  // filter and edit
+  const filterBtn = document.querySelector("#filterBtn");
+  const toSearchData = document.querySelector(".toSearchData").value;
+  const ftomSearchData = document.querySelector(".ftomSearchData").value;
+  if (ftomSearchData && toSearchData) {
+    filterBtn.click();
+  }
+};
